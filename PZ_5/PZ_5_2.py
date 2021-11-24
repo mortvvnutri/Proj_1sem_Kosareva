@@ -1,62 +1,17 @@
-def minmax(v, x, y, z):
-    vNum = int
-    xNum = int
-    yNum = int
-    zNum = int
-
-    if v < x and v < y and v < z:
-        vNum = 1
-    elif (v < x and v < y) or (v < y and v < z) or (v < x and v < z):
-        vNum = 2
-    elif v < x or v < y or v < z:
-        vNum = 3
-    else:
-        vNum = 4
-
-    if x < v:
-        xNum = vNum - 1
-    else:
-        xNum = vNum + 1
-
+def minmax(x, y):
     if y < x:
-        yNum = xNum
-        xNum += 1
-    else:
-        yNum = xNum + 1
+        y, x = x, y
+    return x, y
 
-    if z < y:
-        zNum = yNum
-        yNum += 1
-    else:
-        zNum = yNum + 1
+a = float(input('Введите данные для переменной А '))
+b = float(input('Введите данные для переменной B '))
+c = float(input('Введите данные для переменной C '))
+d = float(input('Введите данные для переменной D '))
 
-    print(xNum, yNum, zNum, vNum)
+min1, max1 = minmax(a, b)  # поиск максимума и минимума из а и b
+min2, max2 = minmax(c, d)  # поиск максимума и минимума из с и d
+min_minimal, max_minimal = minmax(min1, min2)  # поиск наименьшего из минимов
+min_maximal, max_maximal = minmax(max1, max2)  # поиск наибольшего из максимов
 
-    if xNum == 1:
-        A = x
-    elif yNum == 1:
-        A = y
-    elif zNum == 1:
-        A = z
-    elif vNum == 1:
-        A = v
-    if xNum == 4:
-        D = x
-    elif yNum == 4:
-        D = y
-    elif zNum == 4:
-        D = z
-    elif vNum == 4:
-        D = v
-
-
-
-A = float(input('А = '))
-B = float(input('B = '))
-C = float(input('C = '))
-D = float(input('D = '))
-
-minmax(A, B, C, D)
-
-print(A, '- минимальное значение')
-print(D, '- максимальное значение')
+print('Миниамльное число', min_minimal)
+print('Максимальное число', max_maximal)
