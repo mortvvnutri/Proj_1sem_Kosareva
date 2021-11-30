@@ -3,26 +3,16 @@
 a = list(map(int, input('Введите значение чисел через пробел: ').split()))  # ввод списка с клавиатуры
 N = len(a)  # узнавание длины списка
 
-x = 0
-y = True
-for i in range(1, N):
-    if a[i-1] > a[i]:
-        if y:
-            x += 1
-            y = False
-    else:
-        y = True
-print("Монотонные промежутки убывания:", x)
+down = 0
+for i in range(1, len(a)):
+    if a[i] < a[i-1] and a[i-1] >= a[i-2]:
+        down += 1
+print("Монотонные промежутки убывания:", down)
 
-z = 0
-k = True
-for i in range(1, N):
-    if a[i-1] < a[i]:
-        if k:
-            z += 1
-            k = False
-    else:
-        k = True
-print("Монотонные промежутки возрастания:", z)
+up = 0
+for i in range(1, len(a)):
+    if a[i] > a[i-1] and a[i-1] <= a[i-2]:
+        up += 1
+print("Монотонные промежутки возрастания:", up)
 
-print("Всего промежутков монотонности", z+x)
+print("Всего промежутков монотонности", up+down)
