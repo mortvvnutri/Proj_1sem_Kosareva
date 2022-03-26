@@ -1,3 +1,5 @@
+# В исходном текстовом файле (Dostoevsky.txt) найти все фамилии с инициалами
+# (например, А. Ф. Куманиной и т.п.).
 import re
 with open('Dostoevsky.txt', encoding='utf-8')as file:
     inf = file.read()
